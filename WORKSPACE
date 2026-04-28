@@ -102,4 +102,22 @@ load("@org_tensorflow//tensorflow:workspace0.bzl", "tf_workspace0")
 tf_workspace0()
 
 load("@coral_crosstool//:configure.bzl", "cc_crosstool")
-cc_crosstool(name = "crosstool", cpp_version = "c++17")
+cc_crosstool(name = "crosstool", cpp_version = "c++23")
+
+http_archive(
+    name = "com_google_glog",
+    sha256 = "6fc352c434018b11ad312cd3b56be3597b4c6b88480f7bd4e18b3a3b2cf961aa",
+    strip_prefix = "glog-3ba8976592274bc1f907c402ce22558011d6fc5e",
+    urls = [
+        "https://github.com/google/glog/archive/3ba8976592274bc1f907c402ce22558011d6fc5e.tar.gz",
+    ],
+    build_file_content = """
+licenses(['notice'])
+exports_files(['CMakeLists.txt'])
+load(':bazel/glog.bzl', 'glog_library')
+glog_library(with_gflags=0)
+""",
+)
+
+# Local repos are now integrated into the monorepo root.
+# We no longer need local_repository for libedgetpu or libcoral.

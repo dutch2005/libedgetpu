@@ -1,45 +1,15 @@
 Source: libedgetpu
-Maintainer: Coral <coral-support@google.com>
+Section: python
 Priority: optional
-Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.6
-Homepage: https://coral.ai/
+Maintainer: Michael Maertzdorf <dutch2005@gmail.com>
+Build-Depends: debhelper-compat (= 13), 
+               python3-all-dev, 
+               python3.9-dev, python3.10-dev, python3.11-dev, python3.12-dev, python3.13-dev, python3.14-dev,
+               python3-setuptools, python3-numpy, unzip, bazel-6.5.0
+Standards-Version: 4.6.2
 
-Package: libedgetpu1-std
-Provides: libedgetpu1 (= ${binary:Version})
-Conflicts: libedgetpu1, libedgetpu1-legacy
-Section: misc
-Priority: optional
-Architecture: any
-Multi-Arch: same
-Depends: libc6,
-         libgcc1,
-         libstdc++6,
-         libusb-1.0-0,
-         ${misc:Depends}
-Description: Support library for Edge TPU
- Support library (standard speed) for the Edge TPU
-
-Package: libedgetpu1-max
-Provides: libedgetpu1 (= ${binary:Version})
-Conflicts: libedgetpu1, libedgetpu1-legacy
-Section: misc
-Priority: optional
-Architecture: any
-Multi-Arch: same
-Depends: libc6,
-         libgcc1,
-         libstdc++6,
-         libusb-1.0-0,
-         ${misc:Depends}
-Description: Support library for Edge TPU
- Support library (max speed) for the Edge TPU
-
-Package:libedgetpu-dev
-Section: libdevel
-Priority: optional
-Architecture: any
-Depends: libedgetpu1-std (= ${binary:Version}) | libedgetpu1 (= ${binary:Version}),
-         ${misc:Depends}
-Description: Development files for libedgetpu
- This package contains C++ Header files for libedgetpu.so
+Package: python3-pycoral
+Architecture: amd64 arm64
+Depends: ${python3:Depends}, ${shlibs:Depends}, python3-numpy
+Description: Modernized PyCoral (Statically Linked)
+ Unified build of Google Coral Edge TPU Python API and C++23 driver.
