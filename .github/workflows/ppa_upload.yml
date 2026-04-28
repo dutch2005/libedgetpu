@@ -19,7 +19,7 @@ jobs:
           curl -fSsL https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64 -o bazel
           chmod +x bazel
           sudo mv bazel /usr/local/bin/bazel-6.5.0
-          sudo ln -s /usr/local/bin/bazel-6.5.0 /usr/local/bin/bazel
+          sudo ln -sf /usr/local/bin/bazel-6.5.0 /usr/local/bin/bazel
 
       - name: Import GPG Key
         run: |
