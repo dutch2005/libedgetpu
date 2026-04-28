@@ -508,7 +508,7 @@ uint32_t UsbDriver::GetCredits(UsbMlCommands::DescriptorTag tag) {
       return parameters;
     default:
       LOG(FATAL) << StringPrintf("%s unrecognized tag", __func__);
-      unreachable();  // NOLINT
+      EDGETPU_UNREACHABLE();  // NOLINT
   }
 }
 

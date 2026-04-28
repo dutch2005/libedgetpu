@@ -58,7 +58,7 @@ Device::Type GetTypeByName(const std::string& device_type) {
   } else {
     LOG(FATAL) << "Unknown device type: " << device_type
                << R"error(, which should be either "PCI", "USB", "PLATFORM", "REFERENCE", "REMOTE_PCI", "REMOTE_USB", "REMOTE_PLATFORM", or "SIMULATOR")error";
-    unreachable();  // NOLINT
+    EDGETPU_UNREACHABLE();  // NOLINT
   }
 }
 

@@ -77,6 +77,9 @@ def libedgetpu_dependencies(
         ],
         sha256 = tensorflow_sha256,
         strip_prefix = "tensorflow-" + tensorflow_commit,
+        patch_cmds = [
+            "sed -i 's|visibility = \\[\":utils_friends\"\\]|visibility = [\"//visibility:public\"]|' tensorflow/lite/schema/BUILD",
+        ],
     )
 
     maybe(

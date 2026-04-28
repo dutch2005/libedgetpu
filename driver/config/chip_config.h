@@ -92,7 +92,7 @@ class ChipConfig {
   virtual const TileThreadCsrOffsets& GetSpecificTileThreadCsrOffsets(
       int tile_thread_id) const {
     LOG(FATAL) << "Tile thread not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TileThreadCsrOffsets& GetClusterSpecificTileThreadCsrOffsets(
       int atomic_cluster_id, int tile_thread_id) const {
@@ -113,14 +113,14 @@ class ChipConfig {
   // Extracts CSR offsets that supports specific functionality in DarwiNN.
   virtual const MsixCsrOffsets& GetMsixCsrOffsets() const {
     LOG(FATAL) << "MSIX interrupt not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const WireCsrOffsets& GetWireCsrOffsets() const = 0;
   virtual const WireCsrOffsets& GetContextSpecificWireCsrOffsets(
       int context_id) const = 0;
   virtual const MiscCsrOffsets& GetMiscCsrOffsets() const {
     LOG(FATAL) << "Misc not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
 
   // Extracts chip-specific constants in DarwiNN.
@@ -204,124 +204,124 @@ class ChipConfig {
   virtual const TraceCsrOffsets&
   GetScalarCoreIrqCompletionBufferTraceCsrOffsets() const {
     LOG(FATAL) << "Irq completion buffer trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaNarrowToWide0TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA narrow to wide 0 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaNarrowToWide1TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA narrow to wide 1 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaNarrowToWide2TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA narrow to wide 2 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaNarrowToWide3TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA narrow to wide 3 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaNarrowToWide4TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA narrow to wide 4 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaNarrowToWide5TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA narrow to wide 5 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaNarrowToWide6TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA narrow to wide 6 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaNarrowToWide7TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA narrow to wide 7 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaWideToNarrow0TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA wide to narrow 0 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaWideToNarrow1TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA wide to narrow 1 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaWideToNarrow2TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA wide to narrow 2 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaWideToNarrow3TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA wide to narrow 3 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaWideToNarrow4TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA wide to narrow 4 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaWideToNarrow5TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA wide to narrow 5 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaWideToNarrow6TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA wide to narrow 6 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaWideToNarrow7TraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA wide to narrow 7 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileDmaNarrowToNarrowTraceCsrOffsets()
       const {
     LOG(FATAL) << "DMA narrow to narrow trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileOp0TraceCsrOffsets() const {
     LOG(FATAL) << "Op0 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileOp1TraceCsrOffsets() const {
     LOG(FATAL) << "Op1 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileOp2TraceCsrOffsets() const {
     LOG(FATAL) << "Op2 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileOp3TraceCsrOffsets() const {
     LOG(FATAL) << "Op3 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileOp4TraceCsrOffsets() const {
     LOG(FATAL) << "Op4 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileOp5TraceCsrOffsets() const {
     LOG(FATAL) << "Op5 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileOp6TraceCsrOffsets() const {
     LOG(FATAL) << "Op6 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const TraceCsrOffsets& GetTileOp7TraceCsrOffsets() const {
     LOG(FATAL) << "Op7 trace not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
 
   // Extracts CSR offsets used to access sync flags in scalar core.
@@ -355,44 +355,44 @@ class ChipConfig {
   // Beagle-specific.
   virtual const ApexCsrOffsets& GetApexCsrOffsets() const {
     LOG(FATAL) << "Apex not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const ScuCsrOffsets& GetScuCsrOffsets() const {
     LOG(FATAL) << "SCU not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const CbBridgeCsrOffsets& GetCbBridgeCsrOffsets() const {
     LOG(FATAL) << "CB bridge not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const UsbCsrOffsets& GetUsbCsrOffsets() const {
     LOG(FATAL) << "USB not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const InterruptCsrOffsets& GetUsbFatalErrorInterruptCsrOffsets()
       const {
     LOG(FATAL) << "USB not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const InterruptCsrOffsets& GetUsbTopLevel0InterruptCsrOffsets()
       const {
     LOG(FATAL) << "USB not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const InterruptCsrOffsets& GetUsbTopLevel1InterruptCsrOffsets()
       const {
     LOG(FATAL) << "USB not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const InterruptCsrOffsets& GetUsbTopLevel2InterruptCsrOffsets()
       const {
     LOG(FATAL) << "USB not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   virtual const InterruptCsrOffsets& GetUsbTopLevel3InterruptCsrOffsets()
       const {
     LOG(FATAL) << "USB not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
 };
 

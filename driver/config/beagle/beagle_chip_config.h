@@ -103,7 +103,7 @@ class BeagleChipConfig : public ChipConfig {
   }
   const WireCsrOffsets& GetWireCsrOffsets() const override {
     LOG(FATAL) << "Wire interrupt not supported.";
-    unreachable();
+    EDGETPU_UNREACHABLE();
   }
   const MiscCsrOffsets& GetMiscCsrOffsets() const override {
     return kBeagleMiscCsrOffsets;

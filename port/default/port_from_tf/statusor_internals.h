@@ -38,7 +38,7 @@ template <typename T, typename... Args>
 void PlacementNew(void* p, Args&&... args) {
 #if defined(__GNUC__) && !defined(__clang__)
   // Teach gcc that 'p' cannot be null, fixing code size issues.
-  if (p == nullptr) unreachable();
+  if (p == nullptr) EDGETPU_UNREACHABLE();
 #endif
   new (p) T(std::forward<Args>(args)...);
 }

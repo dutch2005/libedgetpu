@@ -37,13 +37,13 @@ void Helper::HandleInvalidStatusCtorArg(Status* status) {
 void Helper::Crash(const Status& status) {
   LOG(FATAL) << "Attempting to fetch value instead of handling error "
              << status;
-  unreachable();  // NOLINT
+  EDGETPU_UNREACHABLE();  // NOLINT
 }
 
 void ThrowBadStatusOrAccess(Status status) {
   LOG(FATAL) << "Attempting to fetch value instead of handling error "
              << status;
-  unreachable();  // NOLINT
+  EDGETPU_UNREACHABLE();  // NOLINT
 }
 
 }  // namespace internal_statusor

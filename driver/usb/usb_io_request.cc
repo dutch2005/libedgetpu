@@ -44,7 +44,7 @@ UsbIoRequest::Type ConvertToIoType(const DmaInfo& info) {
 
     default:
       LOG(FATAL) << "Cannot be converted";
-      unreachable();  // NOLINT
+      EDGETPU_UNREACHABLE();  // NOLINT
   }
 }
 

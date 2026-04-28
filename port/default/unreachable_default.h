@@ -15,6 +15,6 @@
 #ifndef DARWINN_PORT_DEFAULT_UNREACHABLE_DEFAULT_H_
 #define DARWINN_PORT_DEFAULT_UNREACHABLE_DEFAULT_H_
 
-#define unreachable()     __builtin_unreachable()
+#define EDGETPU_UNREACHABLE()     __builtin_unreachable()
 
 #endif  // DARWINN_PORT_DEFAULT_UNREACHABLE_DEFAULT_H_

@@ -209,7 +209,7 @@ class ScHostIntCount {
 
       default:
         LOG(FATAL) << "Unknown field index: " << index;
-        unreachable();
+        EDGETPU_UNREACHABLE();
     }
   }
 
@@ -230,7 +230,7 @@ class ScHostIntCount {
 
       default:
         LOG(FATAL) << "Unknown field index: " << index;
-        unreachable();
+        EDGETPU_UNREACHABLE();
     }
   }
 
@@ -303,7 +303,7 @@ class ScHostIntStatus {
 
       default:
         LOG(FATAL) << "Unknown field index: " << index;
-        unreachable();
+        EDGETPU_UNREACHABLE();
     }
   }
 
@@ -376,7 +376,7 @@ class ScHostIntVector {
 
       default:
         LOG(FATAL) << "Unknown field index: " << index;
-        unreachable();
+        EDGETPU_UNREACHABLE();
     }
   }
 

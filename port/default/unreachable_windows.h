@@ -15,6 +15,6 @@
 #ifndef DARWINN_PORT_DEFAULT_UNREACHABLE_WINDOWS_H_
 #define DARWINN_PORT_DEFAULT_UNREACHABLE_WINDOWS_H_
 
-__declspec(noreturn) inline void unreachable(void) { __assume(false); }
+__declspec(noreturn) inline void EDGETPU_UNREACHABLE(void) { __assume(false); }
 
 #endif  // DARWINN_PORT_DEFAULT_UNREACHABLE_WINDOWS_H_
