@@ -23,11 +23,8 @@ jobs:
 
       - name: Import GPG Key
         run: |
-          # Import the private key (contains both public and private parts)
+          # Use pipe to import the key without creating a temporary file
           echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
-          
-          # Verify the key is present
-          gpg --list-secret-keys EA420FDED8594882
 
       - name: Vendor Dependencies
         run: |
@@ -39,6 +36,7 @@ jobs:
 
       - name: Build Source Package
         run: |
+          # The passphrase is provided via secrets.GPG_PASSPHRASE
           debuild -S -sa -kEA420FDED8594882 -p"gpg --batch --passphrase ${{ secrets.GPG_PASSPHRASE }} --pinentry-mode loopback"
 
       - name: Upload to PPA
