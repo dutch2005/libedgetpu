@@ -14,7 +14,12 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y debhelper devscripts dupload gnupg2 unzip libusb-1.0-0-dev
+          sudo apt-get install -y debhelper devscripts dupload gnupg2 unzip libusb-1.0-0-dev software-properties-common
+          # Add deadsnakes PPA for multiple python versions
+          sudo add-apt-repository -y ppa:deadsnakes/ppa
+          sudo apt-get update
+          sudo apt-get install -y python3.9-dev python3.10-dev python3.11-dev python3.12-dev python3.13-dev python3.14-dev
+          
           # Install Bazel 6.5.0
           curl -fSsL https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64 -o bazel
           chmod +x bazel
@@ -23,20 +28,16 @@ jobs:
 
       - name: Import GPG Key
         run: |
-          # Use pipe to import the key without creating a temporary file
           echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
 
       - name: Vendor Dependencies
         run: |
           mkdir -p vendor_deps
-          # Ensure all python headers are available for multi-python build
-          sudo apt-get install -y python3.9-dev python3.10-dev python3.11-dev python3.12-dev python3.13-dev python3.14-dev
           bazel fetch //pycoral:wheel
           cp -r $(bazel info repository_cache)/* vendor_deps/ || true
 
       - name: Build Source Package
         run: |
-          # The passphrase is provided via secrets.GPG_PASSPHRASE
           debuild -S -sa -kEA420FDED8594882 -p"gpg --batch --passphrase ${{ secrets.GPG_PASSPHRASE }} --pinentry-mode loopback"
 
       - name: Upload to PPA
