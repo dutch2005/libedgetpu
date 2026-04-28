@@ -16,6 +16,17 @@ jobs:
         with:
           java-version: "17"
           distribution: "temurin"
+          cache: "maven" # Enables caching for java dependencies
+
+      - name: Cache Bazel
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/bazel
+            vendor_deps
+          key: ${{ runner.os }}-bazel-${{ hashFiles("**/BUILD", "**/BUILD.bazel", "WORKSPACE", "workspace.bzl") }}
+          restore-keys: |
+            ${{ runner.os }}-bazel-
 
       - name: Install dependencies
         run: |
@@ -27,9 +38,11 @@ jobs:
           sudo apt-get install -y python3.9-dev python3.10-dev python3.11-dev python3.12-dev python3.13-dev python3.14-dev
           
           # Install Bazel 6.5.0
-          curl -fSsL https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64 -o bazel
-          chmod +x bazel
-          sudo mv bazel /usr/local/bin/bazel-6.5.0
+          if [ ! -f /usr/local/bin/bazel-6.5.0 ]; then
+            curl -fSsL https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64 -o bazel
+            chmod +x bazel
+            sudo mv bazel /usr/local/bin/bazel-6.5.0
+          fi
           sudo ln -sf /usr/local/bin/bazel-6.5.0 /usr/local/bin/bazel
 
       - name: Import GPG Key
@@ -39,10 +52,12 @@ jobs:
       - name: Vendor Dependencies
         run: |
           mkdir -p vendor_deps
-          # Override server_javabase if it exists in .bazelrc to point to the setup-java path
           export BAZEL_JAVABASE=$JAVA_HOME
-          bazel --server_javabase=$JAVA_HOME fetch //pycoral:wheel
-          cp -r $(bazel info repository_cache)/* vendor_deps/ || true
+          # Fetch only if vendor_deps is empty (not restored from cache)
+          if [ -z "$(ls -A vendor_deps)" ]; then
+            bazel --server_javabase=$JAVA_HOME fetch //pycoral:wheel
+            cp -r $(bazel info repository_cache)/* vendor_deps/ || true
+          fi
 
       - name: Build Source Package
         run: |
