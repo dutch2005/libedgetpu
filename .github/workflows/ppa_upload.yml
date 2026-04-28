@@ -16,7 +16,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'maven'
+          # Removed cache: "maven" as it causes errors when no pom.xml exists
 
       - name: Cache Bazel
         uses: actions/cache@v4
@@ -51,9 +51,6 @@ jobs:
         run: |
           mkdir -p vendor_deps
           export BAZEL_JAVABASE=$JAVA_HOME
-          # Use local system python headers for build to bypass rules_python version limits
-          # We define a local repository for each python version in WORKSPACE if needed, 
-          # but for source package generation we mainly need to fetch external deps.
           bazel --server_javabase=$JAVA_HOME fetch //pycoral:wheel
           cp -r $(bazel info repository_cache)/* vendor_deps/ || true
 
