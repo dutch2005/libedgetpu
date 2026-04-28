@@ -23,8 +23,11 @@ jobs:
 
       - name: Import GPG Key
         run: |
+          # Import the private key (contains both public and private parts)
           echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
-          echo "${{ secrets.GPG_PASSPHRASE }}" | gpg --batch --passphrase-fd 0 --pinentry-mode loopback --import
+          
+          # Verify the key is present
+          gpg --list-secret-keys EA420FDED8594882
 
       - name: Vendor Dependencies
         run: |
