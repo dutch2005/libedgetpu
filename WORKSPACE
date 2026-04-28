@@ -17,9 +17,9 @@ http_archive(
 
 http_archive(
     name = "rules_python",
-    sha256 = "9d04041ac92a0985e344235f5d946f71ac543f1b1565f2cdbc9a2aaee8adf55b",
-    strip_prefix = "rules_python-0.26.0",
-    url = "http://github.com/bazelbuild/rules_python/releases/download/0.26.0/rules_python-0.26.0.tar.gz",
+    sha256 = "cd37ad748c03ef648d8a70929f9ba98f3c3a9d941018305047b864a78e727575",
+    strip_prefix = "rules_python-0.29.0",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.29.0/rules_python-0.29.0.tar.gz",
 )
 
 load("@rules_python//python:repositories.bzl", "py_repositories")
@@ -31,12 +31,13 @@ load("@org_tensorflow//tensorflow/tools/toolchains/python:python_repo.bzl", "pyt
 python_repository(name = "python_version_repo")
 load("@python_version_repo//:py_version.bzl", "HERMETIC_PYTHON_VERSION")
 
-# Register all target versions for multi-python build
+# Register supported target versions for hermetic build
+# Note: 3.13 and 3.14 are handled via system headers in the debian package build
 [python_register_toolchains(
     name = "python" + v.replace(".", "_"),
     python_version = v,
     ignore_root_user_error = True,
-) for v in ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]]
+) for v in ["3.9", "3.10", "3.11", "3.12"]]
 
 # Default toolchain
 python_register_toolchains(
