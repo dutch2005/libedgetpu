@@ -11,6 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -33,7 +39,9 @@ jobs:
       - name: Vendor Dependencies
         run: |
           mkdir -p vendor_deps
-          bazel fetch //pycoral:wheel
+          # Override server_javabase if it exists in .bazelrc to point to the setup-java path
+          export BAZEL_JAVABASE=$JAVA_HOME
+          bazel --server_javabase=$JAVA_HOME fetch //pycoral:wheel
           cp -r $(bazel info repository_cache)/* vendor_deps/ || true
 
       - name: Build Source Package
