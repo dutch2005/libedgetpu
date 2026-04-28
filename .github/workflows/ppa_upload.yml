@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y debhelper devscripts dupload gnupg2 unzip
+          sudo apt-get install -y debhelper devscripts dupload gnupg2 unzip libusb-1.0-0-dev
           # Install Bazel 6.5.0
           curl -fSsL https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64 -o bazel
           chmod +x bazel
@@ -29,9 +29,9 @@ jobs:
       - name: Vendor Dependencies
         run: |
           mkdir -p vendor_deps
+          # Ensure all python headers are available for multi-python build
+          sudo apt-get install -y python3.9-dev python3.10-dev python3.11-dev python3.12-dev python3.13-dev python3.14-dev
           bazel fetch //pycoral:wheel
-          # Copy repository cache to vendor_deps for offline build
-          # Note: This is a simplified version, real path may vary based on bazel version/config
           cp -r $(bazel info repository_cache)/* vendor_deps/ || true
 
       - name: Build Source Package
