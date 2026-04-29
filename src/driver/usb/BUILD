@@ -26,7 +26,7 @@ cc_library(
 )
 
 LIBUSB_OPTIONS_SRC = select({
-    "//src/:windows": ["libusb_options_windows.cc"],
+    "//src:windows": ["libusb_options_windows.cc"],
     "//src/conditions:default": ["libusb_options_default.cc"],
 })
 
@@ -35,7 +35,7 @@ cc_library(
     srcs = LIBUSB_OPTIONS_SRC,
     hdrs = ["libusb_options.h"],
     deps = ["//src/port"] + select({
-        "//src/:windows": ["@libusb//:headers"],
+        "//src:windows": ["@libusb//:headers"],
         "//src/conditions:default": ["@libusb//:headers"],
     }),
 )
@@ -63,7 +63,7 @@ cc_library(
         "//src/port:thread_annotations",
         "//src/port:tracing",
     ] + select({
-        "//src/:windows": ["@libusb//:headers"],
+        "//src:windows": ["@libusb//:headers"],
         "//src/conditions:default": ["@libusb//:headers"],
     }),
 )

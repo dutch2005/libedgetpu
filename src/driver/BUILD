@@ -76,8 +76,8 @@ cc_library(
 cc_library(
     name = "driver_factory",
     srcs = ["driver_factory.cc"] + select({
-        "//src/:windows": ["driver_factory_windows.cc"],
-        "//src/:darwin": ["driver_factory_darwin.cc"],
+        "//src:windows": ["driver_factory_windows.cc"],
+        "//src:darwin": ["driver_factory_darwin.cc"],
         "//src/conditions:default": ["driver_factory_default.cc"],
     }),
     hdrs = [

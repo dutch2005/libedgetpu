@@ -25,7 +25,7 @@
 #  For compiling as part of Android system however, DARWINN_PORT_ANDROID
 #  must be defined as part of the Android build system.
 
-load("//src/:build_defs.bzl", "darwinn_port_defines")
+load("//src:build_defs.bzl", "darwinn_port_defines")
 
 package(default_visibility = ["//src/visibility:public"])
 
@@ -59,7 +59,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/:darwinn_portable": [
+        "//src:darwinn_portable": [
             "//src/port/default:port",
         ],
     }) + [
@@ -78,7 +78,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/:darwinn_portable": [
+        "//src:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -92,7 +92,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/:darwinn_portable": [
+        "//src:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -117,7 +117,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/:darwinn_portable": [
+        "//src:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -131,7 +131,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/:darwinn_portable": [
+        "//src:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -158,7 +158,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/:darwinn_portable": [
+        "//src:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -193,7 +193,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/:darwinn_portable": [
+        "//src:darwinn_portable": [
             "//src/port/default:port",
             "//src/port:thread_annotations",
         ],
@@ -322,11 +322,11 @@ cc_library(
 cc_library(
     name = "timer",
     srcs = select({
-        "//src/:windows": ["timer_windows.cc"],
+        "//src:windows": ["timer_windows.cc"],
         "//src/conditions:default": ["timer_portable.cc"],
     }),
     hdrs = ["timer.h"] + select({
-        "//src/:windows": ["timer_windows.h"],
+        "//src:windows": ["timer_windows.h"],
         "//src/conditions:default": ["timer_portable.h"],
     }),
     deps = [
@@ -346,11 +346,11 @@ cc_library(
 cc_library(
     name = "fileio",
     srcs = select({
-        "//src/:windows": ["fileio_windows.cc"],
+        "//src:windows": ["fileio_windows.cc"],
         "//src/conditions:default": [],
     }),
     hdrs = ["fileio.h"] + select({
-        "//src/:windows": ["fileio_windows.h"],
+        "//src:windows": ["fileio_windows.h"],
         "//src/conditions:default": ["fileio_linux.h"],
     }),
     deps = [
@@ -366,7 +366,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/:darwinn_portable": [
+        "//src:darwinn_portable": [
             "//src/port/default:port",
         ],
         "//src/conditions:default": [

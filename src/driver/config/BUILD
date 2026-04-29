@@ -21,7 +21,7 @@
 # ${PROJECT}/...  is used.
 
 DEFAULT_VISIBILITY = [
-    "//src/:internal",
+    "//src:internal",
 ]
 
 package(default_visibility = ["//src/visibility:public"])
