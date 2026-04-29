@@ -14,8 +14,8 @@
 ARG IMAGE
 FROM ${IMAGE}
 
-COPY update_sources.sh /
-RUN /update_sources.sh
+COPY docker/update_sources.sh /update_sources.sh
+RUN chmod +x /update_sources.sh && bash /update_sources.sh
 
 RUN dpkg --add-architecture armhf
 RUN dpkg --add-architecture arm64
