@@ -56,10 +56,8 @@ jobs:
       - name: Vendor Dependencies
         run: |
           mkdir -p vendor_deps
-          export BAZEL_JAVABASE=$JAVA_HOME
-          # Fetch with verbose output to track down any remaining dependency issues
-          bazel --server_javabase=$JAVA_HOME fetch //pycoral:wheel
-          cp -r $(bazel info repository_cache)/* vendor_deps/ || true
+          # Fetch all dependencies. The .bazelrc will automatically use vendor_deps as a distribution directory.
+          bazel fetch //pycoral:wheel
 
       - name: Build Source Package
         run: |

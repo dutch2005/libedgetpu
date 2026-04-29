@@ -1,6 +1,3 @@
-startup --server_javabase=/usr/lib/jvm/java-17-openjdk-amd64
-startup --host_jvm_args=-Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
-startup --host_jvm_args=-Djavax.net.ssl.trustStorePassword=changeit
 common --noenable_bzlmod
 common --experimental_repo_remote_exec
 build --compilation_mode=opt
@@ -11,3 +8,6 @@ build --define=darwinn_portable=1
 build --define=usb=libusb
 build --define=tflite_with_edgetpu=true
 build --cxxopt=-I/usr/include/libusb-1.0
+# Use vendor_deps for faster builds
+build --distdir=vendor_deps
+build --repository_cache=~/.cache/bazel-repo
