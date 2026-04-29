@@ -39,7 +39,8 @@ jobs:
           sudo apt-get install -y debhelper devscripts dupload gnupg2 unzip libusb-1.0-0-dev software-properties-common python3-dev
           
           if [ ! -f /usr/local/bin/bazel-6.5.0 ]; then
-            curl -fSsL https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64 -o bazel
+            # Added retries to handle intermittent 502/503 errors from GitHub
+            curl -fSsL --retry 5 --retry-delay 5 https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64 -o bazel
             chmod +x bazel
             sudo mv bazel /usr/local/bin/bazel-6.5.0
           fi
