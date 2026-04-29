@@ -16,26 +16,34 @@
 
 [[ "${NAME}" == "Ubuntu" ]] || exit 0
 
-SOURCES_FILE="/etc/apt/sources.list"
-# Check for Ubuntu 24.04+ deb822 format
+# For Ubuntu 24.04 (noble) and later
 if [ -f "/etc/apt/sources.list.d/ubuntu.sources" ]; then
-    SOURCES_FILE="/etc/apt/sources.list.d/ubuntu.sources"
-    # For deb822, we need a different approach. For now, let's just append the ports
+    # Disable the default sources - we will rewrite them
+    mv /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
+    
+    # Add amd64 sources
+    cat <<EOT > /etc/apt/sources.list.d/amd64.sources
+Types: deb
+URIs: http://archive.ubuntu.com/ubuntu/ http://security.ubuntu.com/ubuntu/
+Suites: ${UBUNTU_CODENAME} ${UBUNTU_CODENAME}-updates ${UBUNTU_CODENAME}-security ${UBUNTU_CODENAME}-backports
+Components: main universe restricted multiverse
+Architectures: amd64
+EOT
+
+    # Add arm64 and armhf sources
     cat <<EOT > /etc/apt/sources.list.d/ports.sources
 Types: deb
 URIs: http://ports.ubuntu.com/ubuntu-ports
 Suites: ${UBUNTU_CODENAME} ${UBUNTU_CODENAME}-updates ${UBUNTU_CODENAME}-security
-Components: main universe
+Components: main universe restricted multiverse
 Architectures: arm64 armhf
 EOT
-    # Limit existing sources to amd64
-    sed -i "s/Architectures: /Architectures: amd64 /g" $SOURCES_FILE || true
 else
-    # Legacy format
-    sed -i "s/deb\ /deb \[arch=amd64\]\ /g" $SOURCES_FILE
-    cat <<EOT >> $SOURCES_FILE
-deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME} main universe
-deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME}-updates main universe
-deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME}-security main universe
+    # Legacy format for older Ubuntu
+    sed -i "s/deb\ /deb \[arch=amd64\]\ /g" /etc/apt/sources.list
+    cat <<EOT >> /etc/apt/sources.list
+deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME} main universe restricted multiverse
+deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME}-updates main universe restricted multiverse
+deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME}-security main universe restricted multiverse
 EOT
 fi
