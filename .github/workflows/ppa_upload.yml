@@ -71,3 +71,17 @@ jobs:
       - name: Upload to PPA
         run: |
           dput -v ppa:dutch2005/pycoral-modernized ../pycoral_*.changes
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ../pycoral_*.dsc
+            ../pycoral_*.orig.tar.gz
+            ../pycoral_*.debian.tar.xz
+            ../pycoral_*.changes
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
