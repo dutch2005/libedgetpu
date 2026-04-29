@@ -98,3 +98,16 @@ jobs:
           export TWINE_PASSWORD=${{ secrets.GITHUB_TOKEN }}
           export TWINE_REPOSITORY_URL=https://maven.pkg.github.com/${{ github.repository }}
           twine upload --skip-existing bazel-bin/pycoral/*.whl
+
+      - name: Sync to PyCoral Repo
+        run: |
+          # Setup SSH key for the pycoral repo
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SYNC_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          
+          # Add remote and push
+          git remote add pycoral git@github.com:dutch2005/pycoral.git
+          git push pycoral master --force
+          git push pycoral --tags --force
