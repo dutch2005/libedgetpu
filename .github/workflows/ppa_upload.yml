@@ -17,15 +17,16 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Cache Bazel
+      - name: Cache Bazel and APT
         uses: actions/cache@v4
         with:
           path: |
             ~/.cache/bazel
             vendor_deps
-          key: ${{ runner.os }}-bazel-${{ hashFiles('**/BUILD', '**/BUILD.bazel', 'WORKSPACE', 'workspace.bzl') }}
+            /var/cache/apt/archives
+          key: ${{ runner.os }}-build-v2-${{ hashFiles('**/BUILD', '**/BUILD.bazel', 'WORKSPACE', 'workspace.bzl', 'debian/control') }}
           restore-keys: |
-            ${{ runner.os }}-bazel-
+            ${{ runner.os }}-build-v2-
 
       - name: Install dependencies
         run: |
