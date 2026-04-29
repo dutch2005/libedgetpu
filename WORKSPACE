@@ -69,7 +69,7 @@ pip_parse(
     name = "pypi",
     annotations = NUMPY_ANNOTATIONS,
     python_interpreter_target = interpreter,
-    requirements = "@org_tensorflow//:requirements_lock_" + HERMETIC_PYTHON_VERSION.replace(".", "_") + ".txt",
+    requirements_lock = "@org_tensorflow//:requirements_lock_" + HERMETIC_PYTHON_VERSION.replace(".", "_") + ".txt",
 )
 
 load("@pypi//:requirements.bzl", "install_deps")
