@@ -36,7 +36,7 @@ jobs:
           sudo apt-get autoremove -y
           
           sudo apt-get update
-          sudo apt-get install -y build-essential debhelper dh-python devscripts dupload gnupg2 unzip libusb-1.0-0-dev software-properties-common python3-dev python3-all-dev python3-numpy
+          sudo apt-get install -y build-essential debhelper dh-python devscripts dput dupload gnupg2 unzip libusb-1.0-0-dev software-properties-common python3-dev python3-all-dev python3-numpy
           
           if [ ! -f /usr/local/bin/bazel-6.5.0 ]; then
             # Added retries to handle intermittent 502/503 errors from GitHub
@@ -71,4 +71,4 @@ jobs:
 
       - name: Upload to PPA
         run: |
-          dput -v ppa:dutch2005/pycoral-modernized ../libedgetpu_*.changes
+          dput -v ppa:dutch2005/pycoral-modernized ../pycoral_*.changes
