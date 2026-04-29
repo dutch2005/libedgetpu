@@ -1,11 +1,10 @@
-Source: libedgetpu
+Source: pycoral
 Section: python
 Priority: optional
 Maintainer: Michael Maertzdorf <dutch2005@gmail.com>
 Build-Depends: debhelper-compat (= 13), 
                python3-all-dev, 
-               python3.9-dev, python3.10-dev, python3.11-dev, python3.12-dev, python3.13-dev, python3.14-dev,
-               python3-setuptools, python3-numpy, unzip, bazel-6.5.0
+               python3-setuptools, python3-numpy, unzip
 Standards-Version: 4.6.2
 
 Package: python3-pycoral
