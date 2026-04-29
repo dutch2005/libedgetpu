@@ -25,7 +25,7 @@
 #  For compiling as part of Android system however, DARWINN_PORT_ANDROID
 #  must be defined as part of the Android build system.
 
-load("//src:build_defs.bzl", "darwinn_port_defines")
+load("//:build_defs.bzl", "darwinn_port_defines")
 
 package(default_visibility = ["//src/visibility:public"])
 
