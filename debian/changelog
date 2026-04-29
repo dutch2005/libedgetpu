@@ -1,7 +1,7 @@
-pycoral (2.0.0-5) noble; urgency=low
+pycoral (2.0.0-6) noble; urgency=low
 
   * Unified build of libedgetpu and pycoral.
   * Static linking of C++23 driver into Python 3.9-3.14 extensions.
   * Removed external libedgetpu dependency requirement.
 
- -- Michael Maertzdorf <dutch2005@gmail.com>  Wed, 29 Apr 2026 16:55:00 +0200
+ -- Michael Maertzdorf <dutch2005@gmail.com>  Wed, 29 Apr 2026 17:05:00 +0200
