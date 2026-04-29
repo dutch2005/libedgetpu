@@ -57,8 +57,16 @@ jobs:
 
       - name: Build Source Package
         run: |
-          # Use -v for verbose debuild output
-          debuild -v -S -sa -kEA420FDED8594882 -p"gpg --batch --passphrase ${{ secrets.GPG_PASSPHRASE }} --pinentry-mode loopback"
+          # Create a fake orig tarball if it doesn't exist, as required by debuild for source packages
+          # This is a common pattern for 'native' or unified repositories
+          tar -czf ../pycoral_2.0.0.orig.tar.gz --exclude=.git --exclude=vendor_deps .
+          
+          # Build the source package
+          # -S: Build source package
+          # -sa: Force inclusion of original source (required for first upload)
+          # -k: Use GPG key ID
+          # -p: Passphrase configuration
+          debuild -S -sa -kEA420FDED8594882 -p"gpg --batch --passphrase ${{ secrets.GPG_PASSPHRASE }} --pinentry-mode loopback"
 
       - name: Upload to PPA
         run: |
