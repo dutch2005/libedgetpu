@@ -18,7 +18,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'bazel'
 
       - name: Cache Bazel and Vendor Deps
         uses: actions/cache@v4
