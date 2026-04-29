@@ -36,11 +36,7 @@ jobs:
           sudo apt-get autoremove -y
           
           sudo apt-get update
-          sudo apt-get upgrade -y
-          sudo apt-get install -y debhelper devscripts dupload gnupg2 unzip libusb-1.0-0-dev software-properties-common
-          sudo add-apt-repository -y ppa:deadsnakes/ppa
-          sudo apt-get update
-          sudo apt-get install -y python3.9-dev python3.10-dev python3.11-dev python3.12-dev python3.13-dev python3.14-dev
+          sudo apt-get install -y debhelper devscripts dupload gnupg2 unzip libusb-1.0-0-dev software-properties-common python3-dev
           
           if [ ! -f /usr/local/bin/bazel-6.5.0 ]; then
             curl -fSsL https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64 -o bazel
