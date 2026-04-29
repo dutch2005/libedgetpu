@@ -16,7 +16,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          # Removed cache: "maven" as it causes errors when no pom.xml exists
 
       - name: Cache Bazel
         uses: actions/cache@v4
@@ -51,13 +50,15 @@ jobs:
         run: |
           mkdir -p vendor_deps
           export BAZEL_JAVABASE=$JAVA_HOME
+          # Fetch with verbose output to track down any remaining dependency issues
           bazel --server_javabase=$JAVA_HOME fetch //pycoral:wheel
           cp -r $(bazel info repository_cache)/* vendor_deps/ || true
 
       - name: Build Source Package
         run: |
-          debuild -S -sa -kEA420FDED8594882 -p"gpg --batch --passphrase ${{ secrets.GPG_PASSPHRASE }} --pinentry-mode loopback"
+          # Use -v for verbose debuild output
+          debuild -v -S -sa -kEA420FDED8594882 -p"gpg --batch --passphrase ${{ secrets.GPG_PASSPHRASE }} --pinentry-mode loopback"
 
       - name: Upload to PPA
         run: |
-          dput ppa:dutch2005/pycoral-modernized ../libedgetpu_*.changes
+          dput -v ppa:dutch2005/pycoral-modernized ../libedgetpu_*.changes

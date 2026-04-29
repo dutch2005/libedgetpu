@@ -6,7 +6,14 @@ export PYVERS=$(shell py3versions -vr)
 
 override_dh_auto_build:
 	for py in $(PYVERS); do \
-		TF_PYTHON_VERSION=$$py bazel build //pycoral:wheel --distdir=./vendor_deps --nohome_rc --nosystem_rc --cxxopt="-std=c++23"; \
+		TF_PYTHON_VERSION=$$py bazel build //pycoral:wheel \
+			--distdir=./vendor_deps \
+			--nohome_rc --nosystem_rc \
+			--cxxopt="-std=c++23" \
+			--subcommands \
+			--verbose_failures \
+			--sandbox_debug \
+			-c dbg; \
 	done
 
 override_dh_auto_install:
