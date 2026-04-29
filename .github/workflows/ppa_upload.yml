@@ -8,6 +8,8 @@ on:
 jobs:
   ppa_upload:
     runs-on: ubuntu-24.04
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
       
@@ -16,14 +18,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: 'bazel'
 
-      - name: Cache Bazel and APT
+      - name: Cache Bazel and Vendor Deps
         uses: actions/cache@v4
         with:
           path: |
             ~/.cache/bazel
             vendor_deps
-            /var/cache/apt/archives
           key: ${{ runner.os }}-build-v2-${{ hashFiles('**/BUILD', '**/BUILD.bazel', 'WORKSPACE', 'workspace.bzl', 'debian/control') }}
           restore-keys: |
             ${{ runner.os }}-build-v2-
