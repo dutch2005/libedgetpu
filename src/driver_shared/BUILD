@@ -14,7 +14,7 @@
 
 # Darwinn ddriver libraries shared across runtime generations.
 package(
-    default_visibility = ["//src/visibility:public"],
+    default_visibility = ["//src/visibility:public_target"],
 )
 
 # Google Owned Code

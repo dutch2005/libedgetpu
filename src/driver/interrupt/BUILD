@@ -15,7 +15,7 @@
 # Description:
 #  Interrupt functionality.
 
-package(default_visibility = ["//src/visibility:public"])
+package(default_visibility = ["//src/visibility:public_target"])
 
 licenses(["notice"])
 

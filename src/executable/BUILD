@@ -25,7 +25,7 @@ load(
 
 licenses(["notice"])
 
-package(default_visibility = ["//src/visibility:public"])
+package(default_visibility = ["//src/visibility:public_target"])
 
 flatbuffer_cc_library(
     name = "executable_fbs",

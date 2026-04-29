@@ -15,7 +15,7 @@
 # Description:
 #  Port of various google3 libraries and utilities.
 
-package(default_visibility = ["//src/visibility:public"])
+package(default_visibility = ["//src/visibility:public_target"])
 
 # All Google Owned Code except :
 # - certain files in port/default/ that are under Apache 2.0 license.

@@ -15,7 +15,7 @@
 # Description:
 #  Beagle Specific functionality.
 
-package(default_visibility = ["//src/visibility:public"])
+package(default_visibility = ["//src/visibility:public_target"])
 
 # Google Owned Code
 licenses(["unencumbered"])

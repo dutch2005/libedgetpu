@@ -16,7 +16,7 @@
 #  Portable DarwiNN driver implementation.
 
 package(
-    default_visibility = ["//src/visibility:public"],
+    default_visibility = ["//src/visibility:public_target"],
 )
 
 licenses(["notice"])
