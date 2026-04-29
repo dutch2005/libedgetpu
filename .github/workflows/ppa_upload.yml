@@ -8,8 +8,6 @@ on:
 jobs:
   ppa_upload:
     runs-on: ubuntu-24.04
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
       
