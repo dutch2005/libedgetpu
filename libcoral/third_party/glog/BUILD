@@ -25,6 +25,6 @@ cc_library(
         ":windows": ["GLOG_NO_ABBREVIATED_SEVERITIES"],
         "//libcoral/conditions:default": [],
     }),
-    visibility = ["//libcoral/visibility:public"],
+    visibility = ["//libcoral/visibility:public_target"],
     deps = ["@com_google_glog//:glog"],
 )

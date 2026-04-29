@@ -15,7 +15,7 @@
 # BUILD rules for DarwiNN TfLite Custom-op public interface.
 
 package(
-    default_visibility = ["//libcoral/visibility:public"],
+    default_visibility = ["//libcoral/visibility:public_target"],
 )
 
 licenses(["notice"])

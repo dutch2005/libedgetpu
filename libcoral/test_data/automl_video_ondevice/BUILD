@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package(default_visibility = ["//libcoral/visibility:public"])
+package(default_visibility = ["//libcoral/visibility:public_target"])
 
 licenses(["notice"])
 
@@ -20,7 +20,7 @@ exports_files(
     [
         "traffic_model.tflite",
     ],
-    visibility = ["//libcoral/visibility:public"],
+    visibility = ["//libcoral/visibility:public_target"],
 )
 
 filegroup(

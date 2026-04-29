@@ -15,7 +15,7 @@
 # Description:
 #  Port of various google3 libraries and utilities.
 
-package(default_visibility = ["//libcoral/visibility:public"])
+package(default_visibility = ["//libcoral/visibility:public_target"])
 
 # Files are originally ported from TensorFlow.
 licenses(["notice"])

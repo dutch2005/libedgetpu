@@ -14,7 +14,7 @@
 
 # Darwinn ddriver libraries shared across runtime generations.
 package(
-    default_visibility = ["//libcoral/visibility:public"],
+    default_visibility = ["//libcoral/visibility:public_target"],
 )
 
 # Google Owned Code

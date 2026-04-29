@@ -24,7 +24,7 @@ DEFAULT_VISIBILITY = [
     "//libcoral/:internal",
 ]
 
-package(default_visibility = ["//libcoral/visibility:public"])
+package(default_visibility = ["//libcoral/visibility:public_target"])
 
 # All Google Owned Code except :
 # - certain files in port/default/ that are under Apache 2.0 license.

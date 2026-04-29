@@ -15,7 +15,7 @@
 # Description:
 #  Beagle Specific functionality.
 
-package(default_visibility = ["//libcoral/visibility:public"])
+package(default_visibility = ["//libcoral/visibility:public_target"])
 
 # Google Owned Code
 licenses(["unencumbered"])

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package(default_visibility = ["//libcoral/visibility:public"])
+package(default_visibility = ["//libcoral/visibility:public_target"])
 
 config_setting(
     name = "aarch64",

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 package(
-    default_visibility = ["//libcoral/visibility:public"],
+    default_visibility = ["//libcoral/visibility:public_target"],
 )
 
 licenses(["notice"])

@@ -15,7 +15,7 @@
 # Description:
 #   Beagle-specific configuration and CSR Layouts.
 
-package(default_visibility = ["//libcoral/visibility:public"])
+package(default_visibility = ["//libcoral/visibility:public_target"])
 
 licenses(["notice"])
 
