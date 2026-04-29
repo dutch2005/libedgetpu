@@ -66,7 +66,7 @@ cc_library(
         "edgetpu.h",
     ],
     defines = select({
-        "//src:windows": ["EDGETPU_COMPILE_LIBRARY"],
+        "//:windows": ["EDGETPU_COMPILE_LIBRARY"],
         "//conditions:default": [],
     }),
     deps = [
@@ -80,7 +80,7 @@ cc_library(
         "edgetpu_c.h",
     ],
     defines = select({
-        "//src:windows": ["EDGETPU_COMPILE_LIBRARY"],
+        "//:windows": ["EDGETPU_COMPILE_LIBRARY"],
         "//conditions:default": [],
     }),
     deps = [
@@ -281,7 +281,7 @@ cc_library(
 cc_library(
     name = "oss_edgetpu_direct_pci",
     deps = select({
-        "//src:windows": [":edgetpu_internal_direct_pci_windows"],
+        "//:windows": [":edgetpu_internal_direct_pci_windows"],
         "//conditions:default": [":edgetpu_internal_direct_pci"],
     }),
 )
@@ -289,8 +289,8 @@ cc_library(
 cc_library(
     name = "oss_edgetpu_direct_all",
     deps = select({
-        "//src:windows": [":edgetpu_internal_direct_all_windows"],
-        "//src:darwin": [":edgetpu_internal_direct_usb"],
+        "//:windows": [":edgetpu_internal_direct_all_windows"],
+        "//:darwin": [":edgetpu_internal_direct_usb"],
         "//conditions:default": [":edgetpu_internal_direct_all"],
     }),
 )

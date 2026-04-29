@@ -59,7 +59,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src:darwinn_portable": [
+        "//:darwinn_portable": [
             "//src/port/default:port",
         ],
     }) + [
@@ -78,7 +78,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src:darwinn_portable": [
+        "//:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -92,7 +92,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src:darwinn_portable": [
+        "//:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -117,7 +117,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src:darwinn_portable": [
+        "//:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -131,7 +131,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src:darwinn_portable": [
+        "//:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -158,7 +158,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src:darwinn_portable": [
+        "//:darwinn_portable": [
             "//src/port/default:port",
         ],
     }),
@@ -193,7 +193,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src:darwinn_portable": [
+        "//:darwinn_portable": [
             "//src/port/default:port",
             "//src/port:thread_annotations",
         ],
@@ -322,11 +322,11 @@ cc_library(
 cc_library(
     name = "timer",
     srcs = select({
-        "//src:windows": ["timer_windows.cc"],
+        "//:windows": ["timer_windows.cc"],
         "//conditions:default": ["timer_portable.cc"],
     }),
     hdrs = ["timer.h"] + select({
-        "//src:windows": ["timer_windows.h"],
+        "//:windows": ["timer_windows.h"],
         "//conditions:default": ["timer_portable.h"],
     }),
     deps = [
@@ -346,11 +346,11 @@ cc_library(
 cc_library(
     name = "fileio",
     srcs = select({
-        "//src:windows": ["fileio_windows.cc"],
+        "//:windows": ["fileio_windows.cc"],
         "//conditions:default": [],
     }),
     hdrs = ["fileio.h"] + select({
-        "//src:windows": ["fileio_windows.h"],
+        "//:windows": ["fileio_windows.h"],
         "//conditions:default": ["fileio_linux.h"],
     }),
     deps = [
@@ -366,7 +366,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src:darwinn_portable": [
+        "//:darwinn_portable": [
             "//src/port/default:port",
         ],
         "//conditions:default": [

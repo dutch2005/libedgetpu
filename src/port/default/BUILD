@@ -36,7 +36,7 @@ cc_library(
         "strcat.h",
         "unreachable.h",
     ] + select({
-        "//src:windows": ["unreachable_windows.h"],
+        "//:windows": ["unreachable_windows.h"],
         "//conditions:default": ["unreachable_default.h"],
     }),
 )
@@ -67,7 +67,7 @@ cc_library(
         "strcat.h",
         "stringprintf.h",
     ] + select({
-        "//src:windows": ["aligned_malloc_windows.h"],
+        "//:windows": ["aligned_malloc_windows.h"],
         "//conditions:default": ["aligned_malloc_default.h"],
     }),
     linkstamp = select({
@@ -115,7 +115,7 @@ cc_library(
     hdrs = [
         "unreachable.h",
     ] + select({
-        "//src:windows": ["unreachable_windows.h"],
+        "//:windows": ["unreachable_windows.h"],
         "//conditions:default": ["unreachable_default.h"],
     }),
 )
