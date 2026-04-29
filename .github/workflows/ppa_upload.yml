@@ -30,6 +30,11 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Remove snap to speed up the runner and prevent slow background updates
+          sudo apt-get remove -y snapd
+          sudo apt-get purge -y snapd
+          sudo apt-get autoremove -y
+          
           sudo apt-get update
           sudo apt-get upgrade -y
           sudo apt-get install -y debhelper devscripts dupload gnupg2 unzip libusb-1.0-0-dev software-properties-common
