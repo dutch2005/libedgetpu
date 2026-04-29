@@ -27,7 +27,7 @@ cc_library(
     name = "chip",
     hdrs = ["chip.h"],
     defines = select({
-        "//src/conditions:default": [],
+        "//conditions:default": [],
     }),
 )
 

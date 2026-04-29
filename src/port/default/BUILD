@@ -37,7 +37,7 @@ cc_library(
         "unreachable.h",
     ] + select({
         "//src:windows": ["unreachable_windows.h"],
-        "//src/conditions:default": ["unreachable_default.h"],
+        "//conditions:default": ["unreachable_default.h"],
     }),
 )
 
@@ -68,11 +68,11 @@ cc_library(
         "stringprintf.h",
     ] + select({
         "//src:windows": ["aligned_malloc_windows.h"],
-        "//src/conditions:default": ["aligned_malloc_default.h"],
+        "//conditions:default": ["aligned_malloc_default.h"],
     }),
     linkstamp = select({
         ":windows": None,  # Linkstamp doesn't work on Windows, https://github.com/bazelbuild/bazel/issues/6997
-        "//src/conditions:default": "builddata.cc",
+        "//conditions:default": "builddata.cc",
     }),
     deps = [
         ":thread_annotations",
@@ -116,7 +116,7 @@ cc_library(
         "unreachable.h",
     ] + select({
         "//src:windows": ["unreachable_windows.h"],
-        "//src/conditions:default": ["unreachable_default.h"],
+        "//conditions:default": ["unreachable_default.h"],
     }),
 )
 

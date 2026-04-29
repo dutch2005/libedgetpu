@@ -209,7 +209,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/conditions:default": [
+        "//conditions:default": [
             "//src/port/default:semaphore",
         ],
     }),
@@ -224,7 +224,7 @@ cc_library(
     ],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/conditions:default": [
+        "//conditions:default": [
             "@com_google_absl//absl/synchronization",
             "@com_google_absl//absl/time",
         ],
@@ -237,7 +237,7 @@ cc_library(
     hdrs = ["blocking_queue.h"],
     defines = darwinn_port_defines(),
     deps = select({
-        "//src/conditions:default": [
+        "//conditions:default": [
             "//src/port/default:blocking_queue",
         ],
     }),
@@ -323,11 +323,11 @@ cc_library(
     name = "timer",
     srcs = select({
         "//src:windows": ["timer_windows.cc"],
-        "//src/conditions:default": ["timer_portable.cc"],
+        "//conditions:default": ["timer_portable.cc"],
     }),
     hdrs = ["timer.h"] + select({
         "//src:windows": ["timer_windows.h"],
-        "//src/conditions:default": ["timer_portable.h"],
+        "//conditions:default": ["timer_portable.h"],
     }),
     deps = [
         ":port",
@@ -347,11 +347,11 @@ cc_library(
     name = "fileio",
     srcs = select({
         "//src:windows": ["fileio_windows.cc"],
-        "//src/conditions:default": [],
+        "//conditions:default": [],
     }),
     hdrs = ["fileio.h"] + select({
         "//src:windows": ["fileio_windows.h"],
-        "//src/conditions:default": ["fileio_linux.h"],
+        "//conditions:default": ["fileio_linux.h"],
     }),
     deps = [
         ":port",
@@ -369,7 +369,7 @@ cc_library(
         "//src:darwinn_portable": [
             "//src/port/default:port",
         ],
-        "//src/conditions:default": [
+        "//conditions:default": [
             "//src/util/task:status",
         ],
     }),
