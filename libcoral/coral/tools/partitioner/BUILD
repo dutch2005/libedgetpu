@@ -27,6 +27,17 @@ cc_library(
     ],
 )
 
+cc_test(
+    name = "strategy_test",
+    srcs = ["strategy_test.cc"],
+    deps = [
+        ":strategy",
+        ":utils",
+        "@com_google_googletest//:gtest_main",
+        "@org_tensorflow//tensorflow/lite/schema:schema_fbs",
+    ],
+)
+
 cc_binary(
     name = "partition_with_num_ops",
     srcs = ["partition_with_num_ops.cc"],

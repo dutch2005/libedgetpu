@@ -186,3 +186,15 @@ cc_library(
         "//src/port",
     ],
 )
+
+cc_test(
+    name = "mmu_mapper_test",
+    srcs = ["mmu_mapper_test.cc"],
+    deps = [
+        ":mmu_mapper",
+        "//src/api:buffer",
+        "//src/driver/memory:address_utilities",
+        "//src/port",
+        "@com_google_googletest//:gtest_main",
+    ],
+)

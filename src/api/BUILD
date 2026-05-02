@@ -182,3 +182,44 @@ cc_library(
         "execution_context_interface.h",
     ],
 )
+
+cc_test(
+    name = "allocated_buffer_test",
+    srcs = ["allocated_buffer_test.cc"],
+    deps = [
+        ":allocated_buffer",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "buffer_test",
+    srcs = ["buffer_test.cc"],
+    deps = [
+        ":buffer",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "watchdog_test",
+    srcs = ["watchdog_test.cc"],
+    deps = [
+        ":watchdog",
+        "//src/port:ptr_util",
+        "//src/port:statusor",
+        "//src/port:timer",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "layer_information_test",
+    srcs = ["layer_information_test.cc"],
+    deps = [
+        ":layer_information",
+        "//src/executable:executable_fbs",
+        "//src/port:ptr_util",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
